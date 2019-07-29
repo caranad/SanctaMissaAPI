@@ -8,10 +8,9 @@ function getMassData(res, month, day, year, num) {
     // Add parameter to accomodate for Christmas Day
     const missanumber = num || 1;
     const url = config['URL'] + '?date=' + month + '-' + day + '-' + year + "&missanumber=" + missanumber;
+    res.header("Content-Type",'application/json');
 
     missa(url).then((html) => {
-        res.header("Content-Type",'application/json');
-
         let propers = {};
 
         // Saint / Feast of the Day
@@ -22,6 +21,11 @@ function getMassData(res, month, day, year, num) {
         // since no Mass is celebrated that day
         if (utils.isTriduum(propers['commemoration'])) {
             res.status(200).send(JSON.stringify(propers, null, 4));
+        }
+        else if (!utils.isValidDate(month, day)) {
+            res.json({
+                "error": "Invalid date"
+            })
         }
         else {
             // Introit

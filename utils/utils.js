@@ -4,6 +4,12 @@ function cleanArray(array) {
     })
 }
 
+function isValidDate(month, day) {
+    const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    return (month >= 1 && month <= 12) && (day >= 1 && day <= daysInMonth[month - 1]);
+}
+
 function numCommemorations(array) {
     let num = 0;
 
@@ -168,6 +174,7 @@ function isTriduum(day) {
 }
 
 module.exports.cleanArray = cleanArray;
+module.exports.isValidDate = isValidDate;
 module.exports.numCommemorations = numCommemorations;
 module.exports.getCommemoration = getCommemoration;
 module.exports.getIntroit = getIntroit;
