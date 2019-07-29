@@ -4,6 +4,6 @@ const app = express();
 
 app.use('/missa', missa)
 
-app.listen(process.ENV.PORT || 8000, () => {
+app.listen(process.env.PORT || 8000, () => {
     console.log("SanctaMissaAPI opened at http://localhost:8000");
 })
