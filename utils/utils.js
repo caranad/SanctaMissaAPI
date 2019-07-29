@@ -16,6 +16,13 @@ function numCommemorations(array) {
     return num;
 }
 
+function getCommemoration(array) {
+    return {
+        feast: array[0].trim(),
+        class: array[1].trim()
+    }
+}
+
 function getIntroit(introit) {
     return [
         {
@@ -156,8 +163,13 @@ function getPostCommunion(postcommunio) {
     }
 }
 
+function isTriduum(day) {
+    return (day['feast'].indexOf("Sabbato Sancto") != -1 || day['feast'].indexOf("Parasceve") != -1)
+}
+
 module.exports.cleanArray = cleanArray;
 module.exports.numCommemorations = numCommemorations;
+module.exports.getCommemoration = getCommemoration;
 module.exports.getIntroit = getIntroit;
 module.exports.getOpeningPrayer = getOpeningPrayer;
 module.exports.getEpistle = getEpistle;
@@ -168,3 +180,4 @@ module.exports.getSecret = getSecret;
 module.exports.getPreface = getPreface;
 module.exports.getCommunion = getCommunion;
 module.exports.getPostCommunion = getPostCommunion;
+module.exports.isTriduum = isTriduum;
