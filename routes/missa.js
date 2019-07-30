@@ -28,11 +28,7 @@ router.get('/:month/:day/:year/:num?', (req, res) => {
     const month = req.params.month;
     const day = req.params.day;
     const year = req.params.year;
-    let num = req.params.num;
-    
-    if (num == undefined) {
-        num = 1;
-    }
+    const num = req.params.num;
 
     sanctamissa.getMassData(res, month, day, year, num);
 })

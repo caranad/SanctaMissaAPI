@@ -27,6 +27,18 @@ function getMassData(res, month, day, year, num) {
                 "error": "Invalid date"
             })
         }
+        else if (num > 3) {
+            if (month == 12 && day == 25) {
+                res.json({
+                    "error": "There can only be three Masses on Christmas Day."
+                })
+            }
+            else {
+                res.json({
+                    "error": "This flag should be kept to less than 3, and ideally used during Christmas Day (25 December)."
+                })
+            }
+        }
         else {
             // Introit
             const introit = utils.cleanArray($("td#L6:nth-of-type(1) font[color='black']", html).text().split("\n"));
