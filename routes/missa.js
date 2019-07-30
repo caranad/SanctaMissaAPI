@@ -30,7 +30,7 @@ router.get('/:month/:day/:year/:num?', (req, res) => {
     const year = req.params.year;
     let num = req.params.num;
     
-    if (num != undefined) {
+    if (num == undefined) {
         num = 1;
     }
 
